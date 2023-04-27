@@ -15,6 +15,8 @@ class SimpleClass(var h:Int, var w:Int) {
         this(y2-y1,x2-x1)
 }
 
+
+
 class player(var str:Int =0, var dex:Int = 0, var XP:Int = 0, var lvl:Int = 1, var nextlvlxp:Int = 10 ){
     public fun recivexp(xp:Int){
         XP+=xp
@@ -31,3 +33,40 @@ class player(var str:Int =0, var dex:Int = 0, var XP:Int = 0, var lvl:Int = 1, v
     }
 }
 
+class SugarStorage(){
+    var volume:Int = 0
+
+    fun decreaseSugar(v:Int){
+        if(v>0) volume - v
+        if(volume<0) volume = 0
+    }
+
+    fun increaseSugar(v:Int){
+        if(v>0) volume+v
+    }
+}
+
+open class item (var lvl: Int, var weight: Double)
+
+open class weapon (lvl:Int, weight:Double):item(lvl,weight){
+    open fun calcDamage(): Int =42
+}
+class magic_weapon (lvl:Int, weight:Double):weapon(lvl,weight){
+    override fun calcDamage():Int = super.calcDamage()*2
+}
+
+open class Bug(val rank: Int, val name:String) {
+    open fun getSugarLimit(): Int{
+        return rank
+    }
+
+    fun getId(): String{
+        return "${rank}.${name}"
+    }
+}
+
+class  BugCivilian(rank: Int, name:String):Bug(rank,name){
+    override fun getSugarLimit(): Int {
+        return rank/2
+    }
+}
