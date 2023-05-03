@@ -15,3 +15,27 @@ fun calculateWordStat(input:String): String{
     }
     return maxName
 }
+
+class DogException() : Exception()
+open class CatException() : Exception()
+
+fun checkClient(client : String) {
+    if ("dog" in client)  throw DogException()
+    if ("cat" in client)  throw CatException()
+}
+
+open class SphinxesException():Exception(){
+
+}
+
+//fun engineStatus(engineNumber:Int): String{
+//    return try{rawEngineStatus(engineNumber)
+//    }
+//    catch (e:EngineNotFoundException){
+//        return "engine <number> not found"
+//    }
+//    catch (e:SensorsMeltException){
+//        return "engine <number> offline"
+//    }
+//}
+
